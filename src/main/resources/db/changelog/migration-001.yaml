@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: system
+      changes:
+        - sql:
+            sql: 'CREATE SCHEMA IF NOT EXISTS main'
+        - createTable:
+            schemaName: main
+            tableName: 'animes_types'
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  defaultValue: public.gen_random_uuid()
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    uniqueKey: true
