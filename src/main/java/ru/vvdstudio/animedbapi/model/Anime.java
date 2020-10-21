@@ -11,6 +11,18 @@ import java.util.Set;
 
 @Entity
 @Table(schema = "main", name = "animes")
+@NamedEntityGraphs(value = {
+        @NamedEntityGraph(name = "anime.all", attributeNodes = {
+                @NamedAttributeNode(value = "type"),
+                @NamedAttributeNode(value = "ageRating"),
+                @NamedAttributeNode(value = "licenser"),
+                @NamedAttributeNode(value = "studio"),
+                @NamedAttributeNode(value = "status"),
+                @NamedAttributeNode(value = "authors"),
+                @NamedAttributeNode(value = "genres"),
+                @NamedAttributeNode(value = "heroes")
+        })
+})
 @Getter
 @Setter
 @NoArgsConstructor
