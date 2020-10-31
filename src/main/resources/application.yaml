@@ -23,3 +23,9 @@ spring:
     change-log: classpath:/db/changelog/master.yaml
     enabled: true
 
+  mvc:
+    throw-exception-if-no-handler-found: true
+
+  resources:
+    add-mappings: false
+
