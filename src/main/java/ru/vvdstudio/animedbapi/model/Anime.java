@@ -3,9 +3,14 @@ package ru.vvdstudio.animedbapi.model;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.validator.constraints.Range;
 import ru.vvdstudio.animedbapi.model.base.BaseEntity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -29,6 +34,8 @@ import java.util.Set;
 @AllArgsConstructor
 @ToString
 public class Anime extends BaseEntity {
+    @NotBlank
+    @Size(max = 255)
     @Column(name = "title", nullable = false)
     private String title;
 
@@ -37,10 +44,13 @@ public class Anime extends BaseEntity {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private AnimeType type;
 
+    @NotNull
+    @Min(value = 1)
     @Column(name = "episodes_count")
     private Integer episodesCount;
     @Column(name = "poster")
     private String poster;
+    @NotNull
     @Column(name = "announcement_date")
     private LocalDate announcmentDate;
     @Column(name = "start_date_show")

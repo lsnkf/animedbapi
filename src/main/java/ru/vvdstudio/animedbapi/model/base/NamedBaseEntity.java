@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotBlank;
 
 @MappedSuperclass
 @NoArgsConstructor
@@ -12,6 +13,7 @@ import javax.persistence.MappedSuperclass;
 @Setter
 @ToString
 abstract public class NamedBaseEntity extends BaseEntity {
+    @NotBlank
     @Column(name = "name", nullable = false)
     private String name;
 }
