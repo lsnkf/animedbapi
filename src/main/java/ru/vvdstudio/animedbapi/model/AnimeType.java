@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -17,6 +19,8 @@ import java.util.List;
 @Getter
 @Setter
 public class AnimeType extends NamedBaseEntity {
+    @NotBlank
+    @Size(max = 255)
     @OneToMany(mappedBy = "type")
     private List<Anime> animes;
 }
