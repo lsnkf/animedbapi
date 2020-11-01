@@ -1,9 +1,10 @@
 package ru.vvdstudio.animedbapi.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.validator.constraints.Range;
+import org.springframework.format.annotation.DateTimeFormat;
 import ru.vvdstudio.animedbapi.model.base.BaseEntity;
 
 import javax.persistence.*;
@@ -51,8 +52,12 @@ public class Anime extends BaseEntity {
     @Column(name = "poster")
     private String poster;
     @NotNull
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "announcement_date")
     private LocalDate announcmentDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "start_date_show")
     private LocalDate startDateShow;
 
